@@ -1,6 +1,6 @@
 from flask import Flask, render_template, json, request
-from flask.ext.mysql import MySQL
-from werkzeug import generate_password_hash, check_password_hash
+from flaskext.mysql import MySQL
+from werkzeug.security import generate_password_hash, check_password_hash
 
 mysql = MySQL()
 app = Flask(__name__)
@@ -41,7 +41,7 @@ def signUp():
             cursor.callproc('sp_createUser', (_name, _email, _hashed_password))
             data = cursor.fetchall()
 
-            if len(data) is 0:
+            if len(data) == 0:
                 conn.commit()
                 return json.dumps({'message': 'User created successfully !'})
             else:
