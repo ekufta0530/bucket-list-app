@@ -1,6 +1,7 @@
 # Setting up the database
 
-'mysql -u <username> -p`
+
+Login: `mysql -u <username> -p`
 
 `CREATE DATABASE BucketList;`
 
